@@ -9,9 +9,112 @@
 </head>
 
 <body>
+  <input type="text" name="first" value="wes">
+  <script src="https://unpkg.com/lodash@4.17.20/lodash.js"></script>
   <script>
+    const age = 100;
+    const wes = {
+      age,
+      name: 'wes',
+      propToCheck: 'NEVER',
+      'cool-dude': true,
+      'really cool': false,
+      '777': true,
+      dog: 'snickers',
+      clothing: {
+        shirts: 10,
+        pants: 2,
+      },
+      sayHello(greeting = 'Hey') {
+        return `${greeting} ${this.name}`;
+      },
+    };
 
+    wes.job = 'web developer';
+    wes.age = 50;
+
+    const wesFroze = Object.freeze(wes); // never can change values inside
+
+    console.log(wes.age);
+    // const propToCheck = prompt('what do u want to check?');
+    // console.log(propToCheck);
+    // console.log(wes[propToCheck]);
+    wes?.jobs?.side; // deep check OPTIONAL CHAINING MDN
+
+    const nameInput = document.querySelector('[name="first"]');
+    const name = nameInput ? nameInput.value : '';
+    console.log(name);
+
+    // console.log(delete wes.job);
+
+    let name1 = 'wes';
+    let name2 = 'wes';
+
+    console.log(name1 === name2);
+    name1 = 'scott';
+    console.log(name1 === name2);
+    // update name1 to be what is name2
+    name1 = name2;
+    console.log(name1 === name2);
+    name2 = name1;
+    name2 = 'westopher';
+
+    const person1 = {
+      first: 'wes',
+      last: 'bos',
+      clothing: {
+        shirts: 10,
+        pants: 2,
+      },
+    };
+    const person2 = {
+      first: 'wes',
+      last: 'bos',
+    };
+
+    // const person3 = person1;
+    // person3.first = 'Larry';
+    // console.log(person3.first);
+    // console.log(person1.first);
+
+    // const person3 = { ...person1 };
+    const person3 = _.cloneDeep(person1);
+    // const person4 = Object.assign({}, person1); // another way to copy an object;
+    person3.first = 'Mike';
+
+    person3.clothing.shirts = 100; // changes person1 as well if shallow cloning
+
+    const meatInv = {
+      bacon: 2,
+      sausage: 3,
+      // oyster: 10,
+    };
+    const veggieInv = {
+      lettuce: 5,
+      totatoes: 3,
+      // oyster: 15,
+    };
+    const inventory = {
+      ...meatInv,
+      ...veggieInv,
+      oyster: 15,
+    };
+
+    function doStuff(data) {
+      data = 'something else';
+      console.log(data);
+    }
+
+    function doStuff2(data) {
+      data.tomatoes = 1000000;
+      console.log(data);
+    }
+
+    doStuff(name1); // wont update a global string
+    doStuff2(inventory); // will modify object
   </script>
+
+
 </body>
 
 </html>
