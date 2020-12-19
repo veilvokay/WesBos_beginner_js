@@ -73,7 +73,7 @@ function deleteItem(id) {
 }
 
 function markAsComplete(id) {
-  console.log('Marking as complete', id);
+  // console.log('Marking as complete', id);
   const itemRef = items.find(item => item.id === id);
   itemRef.complete = !itemRef.complete;
   list.dispatchEvent(new CustomEvent('itemsUpdated'));
