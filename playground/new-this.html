@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  <button class="one">Button 1</button>
+  <button class="two">Button 2</button>
   <script>
     const myDate = new Date('August 11, 2077');
     console.dir(myDate);
@@ -18,17 +20,34 @@
     const wes = new Object({name: 'wes'});
     const span = document.createElement('span');
 
-    function Pizza() {
+    function Pizza(toppings = [], customer) {
       console.log('Making a pizza');
+      // save the toppings that were passed in, to this instance of pizza
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random()*16777215).toString(16);
     }
 
-    const pepperoniPizza = new Pizza();
+    const pepperoniPizza = new Pizza(['pepperoni'], 'Wes Bos');
+    const canadianPizza = new Pizza(['pepperoni', 'mushrooms', 'onion'], 'Kait Bos');
     console.log(pepperoniPizza);
     console.log(pepperoniPizza.constructor);
     console.log(pepperoniPizza instanceof Pizza);
 
+    const button1 = document.querySelector('.one');
+    const button2 = document.querySelector('.two');
 
+    // function tellMeAboutButton() {
+    //   console.log(this);
+    //   setTimeout(() => {
+    //     this.textContent = 'You Clicked Me'
+    //   }, 1000);
+    // }
 
+    //  button1.addEventListener('click', tellMeAboutButton);
+    //  button2.addEventListener('click', tellMeAboutButton);
+
+    
 </script>
 </body>
 
